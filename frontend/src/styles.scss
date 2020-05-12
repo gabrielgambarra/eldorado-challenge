@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./colors.scss";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+html,
+body {
+    background-color: $background;
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    color: $primary_text;
+}
+
+.disabled {
+    background-color: #b5b4b1 !important;
+    box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.25) !important;
+    color: #6a6a69 !important;
+}
