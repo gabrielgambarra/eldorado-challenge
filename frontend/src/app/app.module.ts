@@ -7,11 +7,13 @@ import { AppRoutes } from './app-routing.module';
 import { PagesComponent } from './pages/pages.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './providers/services/auth.interceptor';
+import { NavigationComponent } from './shared/navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent
+    PagesComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
