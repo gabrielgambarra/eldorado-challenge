@@ -12,24 +12,12 @@
                 <label for="email">Email*</label>
                 <input type="email" [(ngModel)]="signup.email" name="email" id="email" required>
 
-                <label for="email">Profile*</label>
-                <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                    <div class="radio">
-                        <input type="radio" name="clientType" id="doctorType" value="DOCTOR" [(ngModel)]="signup.userType" (ngModelChange)="nice()" required>
-                        <label for="doctorType" class="radio-label">Doctor</label>
-                    </div>
-                    <div class="radio">
-                        <input type="radio" name="clientType" id="patientType" value="PATIENT" [(ngModel)]="signup.userType" (ngModelChange)="nice()" required>
-                        <label for="patientType" class="radio-label">Patient</label>
-                    </div>
-                </div>
-
                 <label for="password">Password*</label>
                 <input type="password" [(ngModel)]="signup.password" name="password" id="password" required>
 
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <button type="submit" [disabled]="!signupForm.valid" [class.disabled]="!signupForm.valid">Sign
-                        up!</button>
+                    <button type="submit" [disabled]="!signupForm.valid" [class.disabled]="!signupForm.valid"
+                        (click)="signupAndLogin(signup)">Sign up!</button>
                 </div>
             </form>
 
