@@ -8,6 +8,7 @@ import { PagesComponent } from './pages/pages.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './providers/services/auth.interceptor';
 import { NavigationComponent } from './shared/navigation/navigation.component';
+import { TableModule } from './shared/table/table.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
     BrowserModule,
     RouterModule.forRoot(AppRoutes, { useHash: true }),
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [
     {

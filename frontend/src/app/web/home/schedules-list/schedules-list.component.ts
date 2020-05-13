@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SchedulesService } from 'src/app/providers/services/schedules.service';
+import { Scheduling } from 'src/app/providers/models/scheduling.model';
 
 @Component({
   selector: 'app-schedules-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulesListComponent implements OnInit {
 
-  constructor() { }
+  items: Scheduling[] = [];
+
+  constructor(
+    private schedulesService: SchedulesService
+  ) { }
 
   ngOnInit() {
+    this.schedulesService.getAll().subscribe(success => {
+      this.items = success.schedules;
+    });
   }
 
 }

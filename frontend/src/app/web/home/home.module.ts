@@ -4,6 +4,8 @@ import { HomeComponent } from './home.component';
 import { SchedulesListComponent } from './schedules-list/schedules-list.component';
 import { HomeRoutes } from './home.routing';
 import { RouterModule } from '@angular/router';
+import { TableComponent } from 'src/app/shared/table/table.component';
+import { TableModule } from 'src/app/shared/table/table.module';
 
 
 
@@ -12,6 +14,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild(HomeRoutes),
+    TableModule
   ]
 })
 export class HomeModule { }

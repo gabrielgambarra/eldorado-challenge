@@ -22,6 +22,20 @@ body {
     color: $primary_text;
 }
 
+h1,
+h2,
+h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h2 {
+    word-spacing: 2px;
+    text-align: start;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
 .disabled {
     background-color: #b5b4b1 !important;
     box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.25) !important;

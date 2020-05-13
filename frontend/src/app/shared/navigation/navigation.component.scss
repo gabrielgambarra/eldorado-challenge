@@ -68,7 +68,8 @@ nav {
 
 .container {
     display: flex;
-    align-items: center;
+    padding-top: 6vh;
     justify-content: center;
     height: 92vh;
+    overflow-y: auto;
 }
