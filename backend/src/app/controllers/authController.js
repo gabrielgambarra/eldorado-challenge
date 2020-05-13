@@ -36,7 +36,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/auth', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     res.header("Access-Control-Allow-Origin", "*");
@@ -60,4 +60,4 @@ router.post('/auth', async (req, res) => {
     });
 });
 
-module.exports = app => app.use(router);
+module.exports = app => app.use('/auth', router);
