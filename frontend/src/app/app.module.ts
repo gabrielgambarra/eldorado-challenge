@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing.module';
 import { PagesComponent } from './pages/pages.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './providers/services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,14 @@ import { PagesComponent } from './pages/pages.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes, { useHash: true }),
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
