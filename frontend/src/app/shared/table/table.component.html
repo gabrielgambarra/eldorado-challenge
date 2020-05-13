@@ -13,12 +13,17 @@
     </tr>
     <tr *ngFor="let item of items; let i = index">
         <td>{{ i + 1 }}</td>
+
+        <!-- Doctor Column -->
         <td *ngIf="type != 'patients'">
-            {{ item.doctor.name }}
+            {{ getDoctorName(item) }}
         </td>
+
+        <!-- Patient Column -->
         <td *ngIf="type != 'doctors'">
-            {{ item.patient.name }}
+            {{ getPatientName(item) }}
         </td>
+
         <td *ngIf="type == 'schedules'">
             {{ item.date | date: 'd/MM/yyyy' }}
         </td>

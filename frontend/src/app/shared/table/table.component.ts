@@ -16,4 +16,12 @@ export class TableComponent implements OnInit {
   ngOnInit() {
   }
 
+  getDoctorName(item) {
+    return this.type == 'doctors' ? item.name : item.doctor.name;
+  }
+
+  getPatientName(item) {
+    return this.type == 'patients' ? item.name : item.patient.name;
+  }
+
 }

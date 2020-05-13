@@ -4,6 +4,7 @@ import { DoctorsComponent } from './doctors.component';
 import { DoctorsListComponent } from './doctors-list/doctors-list.component';
 import { DoctorsRoutes } from './doctors.routing';
 import { RouterModule } from '@angular/router';
+import { TableModule } from 'src/app/shared/table/table.module';
 
 
 
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild(DoctorsRoutes),
+    TableModule
   ]
 })
 export class DoctorsModule { }
