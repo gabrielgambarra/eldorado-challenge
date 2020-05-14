@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DoctorFormModule } from '../doctor-form/doctor-form.module';
 import { PatientFormModule } from '../patient-form/patient-form.module';
+import { SheculeFormModule } from '../shecule-form/shecule-form.module';
 
 @NgModule({
     declarations: [ModalComponent],
@@ -16,7 +17,8 @@ import { PatientFormModule } from '../patient-form/patient-form.module';
         FormsModule,
         ReactiveFormsModule,
         DoctorFormModule,
-        PatientFormModule
+        PatientFormModule,
+        SheculeFormModule
     ],
     exports: [],
     providers: []

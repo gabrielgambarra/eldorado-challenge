@@ -18,4 +18,8 @@ export class SchedulesService {
   public getAll(): Observable<any> {
     return this.http.get(`${this.schedulesUrl}all`);
   }
+
+  public save(scheduling): Observable<any> {
+    return this.http.post(`${this.schedulesUrl}create`, scheduling);
+  }
 }
