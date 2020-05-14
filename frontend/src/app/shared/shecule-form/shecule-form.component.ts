@@ -36,7 +36,9 @@ export class SheculeFormComponent implements OnInit {
   }
 
   save(scheduling) {
-    scheduling.date = new Date(scheduling.date).getTime();
+    console.log(scheduling.date)
+    scheduling.date = new Date(scheduling.date.replace('-', '/')).getTime();
+    console.log(scheduling.date)
     this.schedulesService.save(scheduling).subscribe(success => {
       this.onSaveScheduling.emit(success.scheduling);
     });

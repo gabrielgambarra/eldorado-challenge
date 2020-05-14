@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { SchedulesService } from 'src/app/providers/services/schedules.service';
 
 @Component({
   selector: 'app-table',
@@ -14,7 +15,8 @@ export class TableComponent implements OnInit {
   @Input('title') title: string;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private schedulesService: SchedulesService
   ) { }
 
   ngOnInit() {
@@ -36,7 +38,13 @@ export class TableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.items.push(result);
+        if (this.type == 'schedules') {
+          this.schedulesService.getAll().subscribe(success => {
+            this.items = success.schedules;
+          });
+        } else {
+          this.items.push(result);
+        }
       }
     });
   }
