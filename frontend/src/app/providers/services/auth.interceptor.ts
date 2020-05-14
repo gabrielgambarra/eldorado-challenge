@@ -11,10 +11,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   requestCount = 0;
 
+  constructor(
+    private loadService: LoaderService
+  ) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     this.requestCount++;
     const token: string = localStorage.getItem('token');
-    LoaderService.show();
+    this.loadService.show();
 
     if (token) {
       req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
@@ -28,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           this.requestCount--;
           if (this.requestCount < 1) {
-            LoaderService.hide();
+            this.loadService.hide();
           }
         }
         return event;
@@ -38,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
         this.requestCount--;
 
         if (this.requestCount < 1) {
-          LoaderService.hide();
+          this.loadService.hide();
         }
         const err = error.error.message || error.statusText;
         return throwError(error);

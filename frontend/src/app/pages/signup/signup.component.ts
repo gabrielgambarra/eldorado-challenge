@@ -25,9 +25,10 @@ export class SignupComponent implements OnInit {
     this.authService.signup(signup).subscribe(success => {
       console.log(success);
       localStorage.setItem('token', success.token);
-      // if (this.router.url.includes('login')) {
-      //   this.router.navigate(['/home']);
-      // }
+      
+      if (this.router.url.includes('signup')) {
+        this.router.navigate(['/home']);
+      }
     });
 
   }
