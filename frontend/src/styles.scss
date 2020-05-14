@@ -74,6 +74,13 @@ h2 {
     color: #6a6a69 !important;
 }
 
+.centralized {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 .container-inputs {
     padding-bottom: 2vh;
     width: 100%;

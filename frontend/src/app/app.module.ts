@@ -12,11 +12,13 @@ import { TableModule } from './shared/table/table.module';
 import { ModalModule } from './shared/modal/modal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './shared/modal/modal.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagesComponent,
+    LoaderComponent,
     NavigationComponent
   ],
   imports: [

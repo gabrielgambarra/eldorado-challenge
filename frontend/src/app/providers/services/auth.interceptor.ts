@@ -1,30 +1,48 @@
-import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
+import { LoaderService } from 'src/app/shared/loader/loader.service';
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class AuthInterceptor implements HttpInterceptor {
-    
-    intercept(req: HttpRequest<any>, next: HttpHandler) {
-        const token: string = localStorage.getItem('token');
 
-        if (token) {
-            req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
-            req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
-            req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
+  requestCount = 0;
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    this.requestCount++;
+    const token: string = localStorage.getItem('token');
+    LoaderService.show();
+
+    if (token) {
+      req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
+      req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
+      req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
+    }
+
+    return next.handle(req).pipe(
+      map((event: HttpEvent<any>) => {
+
+        if (event instanceof HttpResponse) {
+          this.requestCount--;
+          if (this.requestCount < 1) {
+            LoaderService.hide();
+          }
         }
-    
-        return next.handle(req).pipe(
-          catchError((error: HttpErrorResponse) => {
-            if (error && error.status === 401) {
-              console.log("Error 401 UNAUTHORIZED");
-            }
-            const err = error.error.message || error.statusText;
-            return throwError(error);
-          })
-        );
-      }
+        return event;
+      }),
+      catchError((error: HttpErrorResponse) => {
+
+        this.requestCount--;
+
+        if (this.requestCount < 1) {
+          LoaderService.hide();
+        }
+        const err = error.error.message || error.statusText;
+        return throwError(error);
+      })
+    );
+  }
 }
