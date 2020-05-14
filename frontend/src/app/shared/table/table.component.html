@@ -1,7 +1,9 @@
 <div fxLayout="row" fxLayoutAlign="space-between" class="table-title">
     <h2>{{title}}</h2>
 
-    <p>+</p>
+    <p (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+    </p>
 </div>
 
 <table>

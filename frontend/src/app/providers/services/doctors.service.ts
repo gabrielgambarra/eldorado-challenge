@@ -18,4 +18,8 @@ export class DoctorsService {
   public getAll(): Observable<any> {
     return this.http.get(`${this.doctorsUrl}all`);
   }
+
+  public save(doctorName): Observable<any> {
+    return this.http.post(`${this.doctorsUrl}create`, doctorName);
+  }
 }

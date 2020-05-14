@@ -9,6 +9,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './providers/services/auth.interceptor';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { TableModule } from './shared/table/table.module';
+import { ModalModule } from './shared/modal/modal.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +21,19 @@ import { TableModule } from './shared/table/table.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true }),
     FlexLayoutModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    ModalModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

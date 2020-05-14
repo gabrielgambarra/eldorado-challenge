@@ -36,6 +36,38 @@ h2 {
     letter-spacing: 1px;
 }
 
+* {
+    scrollbar-color: #c3c3c3 rgba(12, 12, 12, 0.1);
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    border-radius: 10px;
+    background: rgba(12, 12, 12, 0.1);
+    border: 0;
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(12, 12, 12, 0.02);
+    border: 0;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #aeaeae;
+    border: 0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #8f8f8f;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background: #8f8f8f;
+}
+
 .disabled {
     background-color: #b5b4b1 !important;
     box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.25) !important;

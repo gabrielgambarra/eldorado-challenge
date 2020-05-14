@@ -12,11 +12,11 @@ export class PatientsListComponent implements OnInit {
   items: Patient[] = [];
 
   constructor(
-    private doctorsService: PatientsService
+    private patientsService: PatientsService
   ) { }
 
   ngOnInit() {
-    this.doctorsService.getAll().subscribe(success => {
+    this.patientsService.getAll().subscribe(success => {
       this.items = success.patients;
     });
   }
