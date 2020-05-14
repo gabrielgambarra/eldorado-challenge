@@ -12,7 +12,7 @@ export class LoaderComponent {
 
   mode = 'indeterminate';
   value = 50;
-  isProgress: Subject<boolean> = this.loaderService.isProgress;
+  isLoading: Subject<boolean> = this.loaderService.isProgress;
 
   constructor(private loaderService: LoaderService) { }
 
