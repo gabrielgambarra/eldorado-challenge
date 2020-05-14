@@ -45,8 +45,12 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  onSaveDoctor(event) {
+  onSave(event) {
     this.dialogRef.close(event);
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
   }
 
 }

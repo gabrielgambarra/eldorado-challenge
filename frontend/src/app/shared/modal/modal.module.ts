@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DoctorFormModule } from '../doctor-form/doctor-form.module';
+import { PatientFormModule } from '../patient-form/patient-form.module';
 
 @NgModule({
     declarations: [ModalComponent],
@@ -14,7 +15,8 @@ import { DoctorFormModule } from '../doctor-form/doctor-form.module';
         FlexLayoutModule,
         FormsModule,
         ReactiveFormsModule,
-        DoctorFormModule
+        DoctorFormModule,
+        PatientFormModule
     ],
     exports: [],
     providers: []

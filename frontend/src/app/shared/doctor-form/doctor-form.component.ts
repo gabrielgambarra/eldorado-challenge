@@ -20,7 +20,6 @@ export class DoctorFormComponent implements OnInit {
   }
 
   save(doctor) {
-    console.log(doctor)
     this.doctorsService.save(doctor).subscribe(success => {
       this.onSaveDoctor.emit(success.doctor);
     });

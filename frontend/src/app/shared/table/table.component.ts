@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
-import { DoctorsService } from 'src/app/providers/services/doctors.service';
-import { PatientsService } from 'src/app/providers/services/patients.service';
 
 @Component({
   selector: 'app-table',
@@ -16,9 +14,7 @@ export class TableComponent implements OnInit {
   @Input('title') title: string;
 
   constructor(
-    public dialog: MatDialog,
-    private doctorsService: DoctorsService,
-    private patientsService: PatientsService
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -39,7 +35,9 @@ export class TableComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.items.push(result);
+      if (result) {
+        this.items.push(result);
+      }
     });
   }
 
